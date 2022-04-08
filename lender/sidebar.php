@@ -10,7 +10,7 @@
 
                 <a href="user_edit.php" class="nav_link <?php echo $user_status; ?>"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Users</span> </a> 
 
-                <a href="#" class="nav_link <?php echo $class_status; ?>"> <i class='bx bx-book-reader nav_icon'></i> <span class="nav_name">Class</span> </a> 
+                <a href="classes_list.php" class="nav_link <?php echo $class_status; ?>"> <i class='bx bx-book-reader nav_icon'></i> <span class="nav_name">Class</span> </a> 
 
                 <a href="#" class="nav_link <?php echo $s; ?>"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> 
 

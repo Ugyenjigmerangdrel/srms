@@ -4,7 +4,8 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/users.php');
 
-$users_d = selectAll('users');
+$users_d = selectAll('r_users');
+$classes = selectAll('classes');
 ?>
 
 
@@ -72,10 +73,14 @@ $users_d = selectAll('users');
                     <select name="class_assigned"  id="" class="form-control" required>
                        <?php if ($class_assigned !== '') {?>
                        <option value="<?php echo $class_assigned?>" selected><?php echo $class_assigned?></option>
-                       <option value="8 A">8 A</option>
+                       <?php foreach ($classes as $key => $mem): ?>
+                        <option value="<?php echo $mem['number_name']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['section'] ?></option>
+                        <?php endforeach;?>
                        <?php } else {?>
                         <option value="" selected></option>
-                       <option value="8 A">8 A</option>
+                        <?php foreach ($classes as $key => $mem): ?>
+                        <option value="<?php echo $mem['number_name']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['section'] ?></option>
+                        <?php endforeach;?>
                       
                        <?php } ?>
                    </select>

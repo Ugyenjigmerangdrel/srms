@@ -9,7 +9,7 @@ function validateUser($user){
         $pa_con = '';
     }
 
-    $existingUser = selectOne('users', ['email' => $user['email']]);
+    $existingUser = selectOne('r_users', ['email' => $user['email']]);
 
     if ($existingUser) {
        
@@ -25,21 +25,7 @@ function validateUser($user){
     return [$n_err, $pa_con];
 }
 
-function validateUserUpdate($user){
-    $existingUser = selectOne('users', ['email' => $user['email']]);
 
-    if ($existingUser) {
-       
-        if (isset($user['register-btn'])) {
-            $n_err = 'User Already Exists';
-           
-        } 
-        
-    } else{
-        $n_err = '';
-    }
-    return $n_err;
-}
 
 function validateLogin($user){
     $errors = array();

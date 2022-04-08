@@ -1,10 +1,10 @@
 <?php 
-$user_status = "active";
+$class_status = "active";
 include('path.php');
 
-include($ROOTPATH . '/app/controllers/users.php');
+include($ROOTPATH . '/app/controllers/class.php');
 
-$users_d = selectAll('r_users');
+$classes = selectAll('classes');
 ?>
 
 
@@ -27,13 +27,13 @@ $users_d = selectAll('r_users');
 <div class="height-100 ">
 <div class="card">
                     <div class="card-body">
-                        <h5 class="">User List</h5>
+                        <h5 class="">Manage Class</h5>
                         <div class="row">
                             <div class="col-lg-10">
-                            <p class="card-description">Details of User of the system </p>
+                            <p class="card-description">Details of Classes in the school </p>
                             </div>
                             <div class="col-lg-2">
-                                <a href="add_user.php" class="btn-success p-2">+ Add User</a>
+                                <a href="add_class.php" class="btn-success p-2">+ Add Class</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -41,24 +41,22 @@ $users_d = selectAll('r_users');
                                 <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
-                                        <th>Assigned Class</th>
-                                        <th>Contact</th>
+                                        <th>Class Name</th>
+                                        <th>Class</th>
+                                        <th>Section</th>
                                         <th>Status</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($users_d as $key => $mem): ?>
+                                <?php foreach ($classes as $key => $mem): ?>
                                     <tr>
                                         <td><?php echo $key + 1; ?></td>
-                                        <td><?php echo $mem['name']; ?></td>
-                                        <td><?php echo $mem['email']; ?></td>
-                                        <td><?php echo $mem['role']; ?></td>
-                                        <td><?php echo $mem['class_assigned']; ?></td>
-                                        <td><?php echo $mem['contact']; ?></td>
-                                        <td><a href="edit_user.php?user_id=<?php echo $mem['id']; ?>" class="p-2 btn-primary">Edit</a> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger">Remove</a> </td>
+                                        <td><?php echo $mem['class_name']; ?></td>
+                                        <td><?php echo $mem['number_name']; ?></td>
+                                        <td><?php echo $mem['section']; ?></td>
+                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger">Remove</a> </td>
+
                                     </tr>
                                 <?php endforeach; ?>
                                 </tbody>
