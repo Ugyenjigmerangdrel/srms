@@ -6,7 +6,7 @@ $table = "subject";
 
 $error = array();
 
-$classes = selectAll($table);
+$subjects = selectAll($table);
 
 $subject = "";
 $subject_type = "";
@@ -23,21 +23,19 @@ if(isset($_GET['del_id'])){
     exit();
 }
 
-if (isset($_POST['add-btn'])){
-    unset($_POST['add-btn']);
+if (isset($_POST['add-subj'])){
+    unset($_POST['add-subj']);
     //printD($_POST);
-    //$error = validateClass($_POST);
+   
     //printD($error);
     if (empty($error)){
-        $class_id = create($table, $_POST);
+        $subject_id = create($table, $_POST);
         //printD($item_id);
-        header('location:'.$BASE_URL.'/srms/classes_list.php');
+        header('location:'.$BASE_URL.'/srms/subject_list.php');
     } else {
         //$p = $error;
-        $class_name = $_POST['class_name'];
-        $number_name = $_POST['number_name'];
-        $section = $_POST['section'];
-
+        $subject = $_POST['subject'];
+        $subject_type = $_POST['subject_type'];
     }
 
 }

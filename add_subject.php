@@ -1,10 +1,10 @@
 <?php 
-$user_status = "active";
+$subject_status = "active";
 include('path.php');
 
-include($ROOTPATH . '/app/controllers/class.php');
+include($ROOTPATH . '/app/controllers/subject.php');
 
-$users_d = selectAll('r_users');
+
 ?>
 
 
@@ -25,39 +25,35 @@ $users_d = selectAll('r_users');
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->
 <div class="height-100 ">
-    <h5>Add Class</h5>
+    <h5>Add Subject</h5>
     <hr>
     <div class="col-lg-6 card">
         <div class="card-body">
-            <form action="add_class.php" class="needs-validation" method="post" novalidate>
+            <form action="add_subject.php" class="needs-validation" method="post" novalidate>
                 <div class="form-group">
-                    <label for="">Class Name</label>
-                    <input type="text" class="form-control" value="<?php echo $class_name; ?>" name="class_name" placeholder="eg.Eight, Nine" required>
+                    <label for="">Subject</label>
+                    <input type="text" class="form-control" value="<?php echo $subject; ?>" name="subject"  required>
                     <div class="invalid-feedback">
-                        Class Name is required
+                        Subject is required
                     </div>
 
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="">Class(Number Format)</label>
-                    <input type="text" class="form-control" value="<?php echo $number_name;?>" name="number_name" placeholder="eg.11, 12" required>
+                    <label for="">Subject Type</label>
+                    <select name="subject_type" id="" class="form-control" required>
+                        <option value=""></option>
+                        <option value="Main">Main</option>
+                        <option value="Elective">Elective</option>
+                    </select>
                     <div class="invalid-feedback">
-                        Class(Number Format) is required
+                        Subject Type is required
                     </div>
                    
                 </div>
                 <br>
-                <div class="form-group">
-                    <label for="">Section</label>
-                    <input type="text" class="form-control" value="<?php echo $section; ?>" name="section" required>
-                    <div class="invalid-feedback">
-                        Section is required
-                    </div>
-
-                </div>
-               <br>
-                <button class="form-control p-2 btn-primary" type="submit" name="add-btn">Add Class</button>
+               
+                <button class="form-control p-2 btn-primary" type="submit" name="add-subj">Add Class</button>
             </form>
         </div>
     </div>

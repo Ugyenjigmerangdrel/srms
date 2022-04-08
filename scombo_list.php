@@ -41,8 +41,8 @@ $classes = selectAll('subject');
                                 <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Subject Name</th>
-                                        <th>Subject Type</th>
+                                        <th>Class</th>
+                                        <th>Subjects</th>
                                         <th>Action</th>
                                         
                                     </tr>
