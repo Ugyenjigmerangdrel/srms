@@ -12,7 +12,7 @@
 
                 <a href="classes_list.php" class="nav_link <?php echo $class_status; ?>"> <i class='bx bx-book-reader nav_icon'></i> <span class="nav_name">Class</span> </a> 
 
-                <a href="#" class="nav_link <?php echo $s; ?>"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> 
+                <a href="subject_list.php" class="nav_link <?php echo $subject_status; ?>"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a> 
 
                 <a href="#" class="nav_link <?php echo $x; ?>"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a> 
 

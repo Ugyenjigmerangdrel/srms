@@ -55,7 +55,7 @@ $classes = selectAll('classes');
                                         <td><?php echo $mem['class_name']; ?></td>
                                         <td><?php echo $mem['number_name']; ?></td>
                                         <td><?php echo $mem['section']; ?></td>
-                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger">Remove</a> </td>
+                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 
                                     </tr>
                                 <?php endforeach; ?>

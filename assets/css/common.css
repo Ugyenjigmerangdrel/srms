@@ -1,0 +1,29 @@
+.btn-primary{
+    background: #be03fc;
+}
+
+.btn-primary:hover{
+    background: #5e057b;
+}
+.btn-info{
+    background: #08a191;
+}
+
+.btn-info:hover{
+    background: #06877a;
+}
+
+.btn-danger{
+    background: #e64717;
+}
+
+.btn-danger:hover{
+    background: #b4310a;
+}
+
+.btn-success{
+    background: #0fd45e;
+}
+.btn-success:hover{
+    background: #07a546;
+}
