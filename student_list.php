@@ -1,10 +1,10 @@
 <?php 
-$combo_status = "active";
+$student_status = "active";
 include('path.php');
 
-include($ROOTPATH . '/app/controllers/subjectcombo.php');
+include($ROOTPATH . '/app/controllers/student.php');
 
-$classes = selectAll('subject_combo');
+$classes = selectAll('student');
 ?>
 
 
@@ -26,8 +26,8 @@ $classes = selectAll('subject_combo');
 <!--Container Main start-->
 <div class="height-100 ">
 <div class="card">
-                    <div class="card-body">
-                        <h5 class="">Manage Suject Combination</h5>
+                    <div class="card-body ">
+                        <h5 class="">Manage Student</h5>
                         <div class="row">
                             <div class="col-lg-9">
                             <p class="card-description">Details of subject combination</p>
@@ -41,8 +41,10 @@ $classes = selectAll('subject_combo');
                                 <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Class</th>
-                                        <th>Subjects</th>
+                                        <th>Name</th>
+                                        <th>Index Number</th>
+                                        <th>Date of Birth</th>                                    
+                                        <th>Email</th>
                                         <th>Action</th>
                                         
                                     </tr>
@@ -51,10 +53,11 @@ $classes = selectAll('subject_combo');
                                 <?php foreach ($classes as $key => $mem): ?>
                                     <tr>
                                         <td><?php echo $key + 1; ?></td>
-                                        <td><?php echo $mem['class']; ?></td>
-                                        <td><?php echo $mem['subject']; ?></td>
-                                       
-                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
+                                        <td><?php echo $mem['name']; ?></td>
+                                        <td><?php echo $mem['index_number']; ?></td>
+                                        <td><?php echo $mem['dob']; ?></td>
+                                        <td><?php echo $mem['email']; ?></td>
+                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-info text-white">Edit</a> </td>
 
                                     </tr>
                                 <?php endforeach; ?>

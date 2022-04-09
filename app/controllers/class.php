@@ -29,6 +29,9 @@ if (isset($_POST['add-btn'])){
     //$error = validateClass($_POST);
     //printD($error);
     if (empty($error)){
+        $_POST['class_comb'] = $_POST['number_name']." ".$_POST['section'];
+        //printD($_POST);
+
         $class_id = create($table, $_POST);
         //printD($item_id);
         header('location:'.$BASE_URL.'/srms/classes_list.php');
