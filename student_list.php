@@ -30,10 +30,10 @@ $classes = selectAll('student');
                         <h5 class="">Manage Student</h5>
                         <div class="row">
                             <div class="col-lg-9">
-                            <p class="card-description">Details of subject combination</p>
+                            <p class="card-description">Details of student</p>
                             </div>
                             <div class="col-lg-3">
-                                <a href="add_subjectcomb.php" class="btn-success p-2">+ Add Combination</a>
+                                <a href="add_student.php" class="btn-success p-2">+ Add Student</a>
                             </div>
                         </div>
                         <div class="table-responsive">
