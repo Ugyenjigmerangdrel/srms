@@ -42,7 +42,7 @@ $classes = selectAll('student');
                                     <tr>
                                         <th>Sl.No</th>
                                         <th>Name</th>
-                                        <th>Index Number</th>
+                                        <th>Student Code</th>
                                         <th>Date of Birth</th>                                    
                                         <th>Email</th>
                                         <th>Action</th>
