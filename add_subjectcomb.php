@@ -1,14 +1,11 @@
 <?php 
 $combo_status = "active";
 include('path.php');
-
 include($ROOTPATH . '/app/controllers/subjectcombo.php');
 
 $classes = selectAll('classes'); 
-
 $subject = selectAll('subject');
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +34,16 @@ $subject = selectAll('subject');
                     
                     <select name="class" class="form-control" id="" required>
                     <option value=""></option>
-                        <?php foreach ($classes as $key => $mem): ?>
-                        <option value="<?php echo $mem['number_name'] ?>"><?php echo $mem['number_name'] ?></option>
-                        <?php endforeach;?>
+                    <option value="7">7</option>  
+                    <option value="8">8</option>  
+                    <option value="9">9</option>  
+                    <option value="10">10</option>  
+                    <option value="11 Arts">11 Arts</option>
+                    <option value="11 Com">11 Com</option> 
+                    <option value="11 Sci">11 Sci</option>   
+                    <option value="12 Arts">12 Arts</option>
+                    <option value="12 Com">12 Com</option> 
+                    <option value="12 Sci">12 Sci</option>   
                     </select>
                 </div>
                 <br>

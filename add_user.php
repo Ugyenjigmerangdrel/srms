@@ -1,7 +1,6 @@
 <?php 
 $user_status = "active";
 include('path.php');
-
 include($ROOTPATH . '/app/controllers/users.php');
 
 $users_d = selectAll('r_users');
@@ -74,12 +73,13 @@ $classes = selectAll('classes');
                        <?php if ($class_assigned !== '') {?>
                        <option value="<?php echo $class_assigned?>" selected><?php echo $class_assigned?></option>
                        <?php foreach ($classes as $key => $mem): ?>
-                        <option value="<?php echo $mem['number_name']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['section'] ?></option>
+                        <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
+                        
                         <?php endforeach;?>
                        <?php } else {?>
                         <option value="" selected></option>
                         <?php foreach ($classes as $key => $mem): ?>
-                        <option value="<?php echo $mem['number_name']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['section'] ?></option>
+                        <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
                         <?php endforeach;?>
                       
                        <?php } ?>

@@ -1,7 +1,6 @@
 <?php 
 $user_status = "active";
 include('path.php');
-
 include($ROOTPATH . '/app/controllers/class.php');
 
 $users_d = selectAll('r_users');
@@ -48,6 +47,21 @@ $users_d = selectAll('r_users');
                    
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="">Stream</label>
+                    <select name="stream" class="form-control"  id="" required>
+                        <option value=""></option>
+                        <option value="none">None</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Commmerce">Commerce</option>
+                        <option value="Science">Science</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Select a Stream
+                    </div>
+
+                </div>
+               <br>
                 <div class="form-group">
                     <label for="">Section</label>
                     <input type="text" class="form-control" value="<?php echo $section; ?>" name="section" required>

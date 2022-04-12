@@ -4,9 +4,7 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/subject.php');
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +19,7 @@ include($ROOTPATH . '/app/controllers/subject.php');
     <script src="assets/js/sidenav.js"></script>
     <title>Result Management System</title>
 </head>
+
 <body id="body-pd">
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->

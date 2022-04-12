@@ -1,9 +1,7 @@
 <?php 
 $student_status = "active";
 include('path.php');
-
 include($ROOTPATH . '/app/controllers/student.php');
-
 
 ?>
 
@@ -36,7 +34,6 @@ include($ROOTPATH . '/app/controllers/student.php');
                     <div class="invalid-feedback">
                         Student Name is required
                     </div>
-
                 </div>
                 <br>
                 <div class="form-group">

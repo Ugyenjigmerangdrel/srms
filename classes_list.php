@@ -43,6 +43,7 @@ $classes = selectAll('classes');
                                         <th>Sl.No</th>
                                         <th>Class Name</th>
                                         <th>Class</th>
+                                        <th>Stream</th>
                                         <th>Section</th>
                                         <th>Status</th>
                                         
@@ -54,6 +55,7 @@ $classes = selectAll('classes');
                                         <td><?php echo $key + 1; ?></td>
                                         <td><?php echo $mem['class_name']; ?></td>
                                         <td><?php echo $mem['number_name']; ?></td>
+                                        <td><?php echo $mem['stream']; ?></td>
                                         <td><?php echo $mem['section']; ?></td>
                                         <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 

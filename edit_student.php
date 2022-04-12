@@ -1,13 +1,9 @@
 <?php 
 $student_status = "active";
 include('path.php');
-
 include($ROOTPATH . '/app/controllers/student.php');
 
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +16,7 @@ include($ROOTPATH . '/app/controllers/student.php');
     <link rel="stylesheet" href="assets/css/user.css">
     <script src="assets/js/sidenav.js"></script>
     <title>Result Management System</title>
+    
 </head>
 <body id="body-pd">
 <?php include("lender/sidebar.php"); ?>
@@ -37,7 +34,6 @@ include($ROOTPATH . '/app/controllers/student.php');
                     <div class="invalid-feedback">
                         Student Name is required
                     </div>
-
                 </div>
                 <br>
                 <div class="form-group">

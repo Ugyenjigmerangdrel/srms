@@ -11,7 +11,7 @@ $classes = selectAll($table);
 $class_name = "";
 $number_name = "";
 $section = "";
-
+$stream = "";
 $p = '';
 
 
@@ -40,7 +40,7 @@ if (isset($_POST['add-btn'])){
         $class_name = $_POST['class_name'];
         $number_name = $_POST['number_name'];
         $section = $_POST['section'];
-
+        $stream = $_POST['stream'];
     }
 
 }
