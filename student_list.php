@@ -57,7 +57,7 @@ $classes = selectAll('student');
                                         <td><?php echo $mem['index_number']; ?></td>
                                         <td><?php echo $mem['dob']; ?></td>
                                         <td><?php echo $mem['email']; ?></td>
-                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-info text-white">Edit</a> </td>
+                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> <a href="edit_student.php?student_id=<?php echo $mem['id']; ?>" class="p-2 btn-info text-white">Edit</a> </td>
 
                                     </tr>
                                 <?php endforeach; ?>

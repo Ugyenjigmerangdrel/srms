@@ -42,7 +42,7 @@ function loginUser($user){
     $_SESSION['id'] = $user['id'];
     $_SESSION['name'] = $user['name'];
     $_SESSION['role'] = $user['role'];
-    
+    $_SESSION['class_assigned'] = $user['class_assigned'];
     $_SESSION['message'] = 'Sucessfully Logged In';
     $_SESSION['type'] = 'success';
     header('location:'. $BASE_URL. '/srms/dashboard.php');

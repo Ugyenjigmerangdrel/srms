@@ -29,7 +29,8 @@ include($ROOTPATH . '/app/controllers/student.php');
     <hr>
     <div class="col-lg-6 card">
         <div class="card-body">
-            <form action="add_student.php" class="needs-validation" method="post" novalidate>
+            <form action="edit_student.php" class="needs-validation" method="post" novalidate>
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class="form-group">
                     <label for="">Name</label>
                     <input type="text" class="form-control" value="<?php echo $name; ?>" name="name"  required>
@@ -68,7 +69,7 @@ include($ROOTPATH . '/app/controllers/student.php');
                 <br>
                 <input type="hidden" name="class" value="<?php echo $_SESSION['class_assigned']; ?>">
 
-                <button class="form-control p-2 btn-primary" type="submit" name="update-stu">Add Student</button>
+                <button class="form-control p-2 btn-primary" type="submit" name="update_stu">Update Student</button>
             </form>
         </div>
     </div>
