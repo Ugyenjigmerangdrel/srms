@@ -65,7 +65,7 @@ include($ROOTPATH . '/app/controllers/student.php');
                 <br>
                 <input type="hidden" name="class" value="<?php echo $_SESSION['class_assigned']; ?>">
 
-                <button class="form-control p-2 btn-primary" type="submit" name="update-stu">Add Student</button>
+                <button class="form-control p-2 btn-primary" type="submit" name="add-stu">Add Student</button>
             </form>
         </div>
     </div>

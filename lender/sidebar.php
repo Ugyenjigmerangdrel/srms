@@ -18,7 +18,7 @@
 
                 <a href="student_list.php" class="nav_link <?php echo $student_status; ?>"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">Students</span> </a> 
 
-                <a href="#" class="nav_link <?php echo $y; ?>"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Result</span> </a> 
+                <a href="result_list.php" class="nav_link <?php echo $result_status; ?>"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Result</span> </a> 
             </div>
         </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
     </nav>

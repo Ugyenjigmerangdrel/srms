@@ -1,10 +1,10 @@
 <?php 
-$student_status = "active";
+$result_status = "active";
 include('path.php');
 
-include($ROOTPATH . '/app/controllers/student.php');
+include($ROOTPATH . '/app/controllers/result.php');
 
-$classes = selectAll('student');
+$records = selectAll('result_record');
 ?>
 
 
@@ -20,20 +20,22 @@ $classes = selectAll('student');
     <link rel="stylesheet" href="assets/css/user.css">
     <script src="assets/js/sidenav.js"></script>
     <title>Result Management System</title>
+
+    
 </head>
 <body id="body-pd">
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->
 <div class="height-100 ">
 <div class="card">
-                    <div class="card-body ">
-                        <h5 class="">Manage Student</h5>
+                    <div class="card-body">
+                        <h5 class="">Manage Results</h5>
                         <div class="row">
-                            <div class="col-lg-9">
-                            <p class="card-description">Details of student</p>
+                            <div class="col-lg-10">
+                            <p class="card-description">Details of Classes in the school </p>
                             </div>
-                            <div class="col-lg-3">
-                                <a href="add_student.php" class="btn-success p-2">+ Add Student</a>
+                            <div class="col-lg-2">
+                                <a href="add_result.php" class="btn-success p-2">+ Add Result</a>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -41,22 +43,23 @@ $classes = selectAll('student');
                                 <thead>
                                     <tr>
                                         <th>Sl.No</th>
-                                        <th>Name</th>
+                                        <th>Student Name</th>
+                                        <th>Class</th>
                                         <th>Student Code</th>
-                                        <th>Date of Birth</th>                                    
-                                        <th>Email</th>
-                                        <th>Action</th>
+                                        <th>Percentage</th>
+                                        <th>Status</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($classes as $key => $mem): ?>
+                                <?php foreach ($records as $key => $mem): ?>
                                     <tr>
                                         <td><?php echo $key + 1; ?></td>
-                                        <td><?php echo $mem['name']; ?></td>
-                                        <td><?php echo $mem['index_number']; ?></td>
-                                        <td><?php echo $mem['dob']; ?></td>
-                                        <td><?php echo $mem['email']; ?></td>
-                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> <a href="edit_student.php?student_id=<?php echo $mem['id']; ?>" class="p-2 btn-info text-white">Edit</a> </td>
+                                        <td><?php echo $mem['student_name']; ?></td>
+                                        <td><?php echo $mem['class']; ?></td>
+                                        <td><?php echo $mem['student_id']; ?></td>
+                                        <td><?php echo $mem['percentage']; ?></td>
+                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 
                                     </tr>
                                 <?php endforeach; ?>
