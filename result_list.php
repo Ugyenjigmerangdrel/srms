@@ -74,7 +74,7 @@ if(empty($_SESSION['status'])){
                                         <td><?php echo $mem['class']; ?></td>
                                         <td><?php echo $mem['student_code']; ?></td>
                                         <td><?php echo $mem['percentage']; ?></td>
-                                        <td><a href="edit_result.php?user_id=<?php echo $mem['id']; ?>" class="p-2 btn-primary ">Edit</a>  <a href="?del_s_code=<?php echo $mem['student_code']; ?>" class="p-2 btn-danger ">Remove</a> </td>
+                                        <td><a href="view_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-info text-white">View</a> <a href="edit_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-primary ">Edit</a>  <a href="?del_s_code=<?php echo $mem['student_code']; ?>" class="p-2 btn-danger ">Remove</a>  </td>
 
                                     </tr>
                                 <?php endforeach; ?>

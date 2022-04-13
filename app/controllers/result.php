@@ -29,12 +29,11 @@ if(isset($_GET['del_s_code'])){
 
 if(isset($_GET['student_id'])){
     $s_code = $_GET['student_id'];
-    $user = selectOne($table, ['student_code' => $id]);
-    $id = $user['id'];
-    $name = $user['name'];
-    $email = $user['email'];
-    $code = $user['index_number'];
-    $dob = $user['dob'];
+    $datas = selectAll($table, ['student_code' => $s_code]);
+    //printD($user);
+    $single_data = selectOne('result_record', ['student_code' => $s_code]);
+    $s_name = $single_data['student_name']; 
+    
 } 
 
 if(isset($_POST['submit'])){
@@ -68,8 +67,8 @@ if(isset($_POST['submit'])){
             $query_run = mysqli_query($conn, $query); 
         }
 
-        $r_query = "INSERT INTO result_record (student_id, percentage, class, student_name) VALUES ('$s_code', '$average', '$class', '$s_name');";
-
+        $r_query = "INSERT INTO result_record (student_code, percentage, class, student_name) VALUES ('$s_code', '$average', '$class', '$s_name');";
+        //printD($r_query);
         $r_ex = mysqli_query($conn, $r_query);
         
         if($query_run && $r_ex)
@@ -88,4 +87,53 @@ if(isset($_POST['submit'])){
     $p = $errors;
     $p_status = 'is-invalid';
    }
+}
+
+if(isset($_POST['update-result'])){
+
+    unset($_POST['update-result']);
+    //printD($_POST);
+    $s_name = $_POST['s_name'];
+    $s_code = $_POST['s_code'];
+    $s_marks = $_POST['marks'];
+    $m_sum = array_sum($s_marks);
+    $average = $m_sum/count($s_marks);
+    //printD($average);
+    $s_subject  = $_POST['subject'];
+    $s_adder = $_SESSION['name'];
+    $s_data = selectOne('student', ['index_number' => $s_code]);
+    $class = $s_data['class'];
+    $s_name = $s_data['name'];
+    foreach($s_subject as $index => $subject){
+        global $conn;
+        $sub_name = $subject;
+        $marks = $s_marks[$index];
+
+        
+        //echo $subject." ".$class."".$marks."<br>";
+
+        $query = "UPDATE result SET marks='$marks' WHERE student_code=$s_code AND subject='$subject'";
+        
+        //printD($query);
+        $query_run = mysqli_query($conn, $query); 
+    }
+
+    $r_query = "UPDATE result_record SET percentage='$average' WHERE student_code=$s_code";
+
+    //printD($r_query);
+
+    $r_ex = mysqli_query($conn, $r_query);
+    
+    if($query_run && $r_ex)
+    {
+        $_SESSION['status'] = "Result Updated Successfully";
+        header("Location: result_list.php");
+        exit(0);
+    }
+    else
+    {
+        $_SESSION['status'] = "Result Not Updated";
+        header("Location: result_list.php");
+        exit(0);
+    }
 }

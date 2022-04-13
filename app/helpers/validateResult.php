@@ -2,7 +2,7 @@
 
 function validateResult($result){
 
-    $existingResult = selectOne('result_record', ['student_id' => $result['s_code']]);
+    $existingResult = selectOne('result_record', ['student_code' => $result['s_code']]);
 
     if ($existingResult) {
         $n_err = 'Result Already Exists';

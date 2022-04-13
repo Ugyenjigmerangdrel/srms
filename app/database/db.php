@@ -149,3 +149,4 @@ function update($table, $id, $data){
     $stmt = executeQuery($sql, $data);
     return $stmt->affected_rows;
 }
+
