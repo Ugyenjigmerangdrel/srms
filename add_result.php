@@ -5,11 +5,18 @@ include('path.php');
 include($ROOTPATH . '/app/controllers/result.php');
 
 $students = selectAll('student', ['class' => $_SESSION['class_assigned']]);
-//printD($students);
-$subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 2)] );
+
+if (strlen($_SESSION['class_assigned']) > 3){
+    $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 7)] );
+} else{
+    $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 2)] );
+}
+
+//$req_status = "";
 
 
 //printD(substr('12sc', 0,2));
+
 ?>
 
 <!DOCTYPE html>
@@ -45,10 +52,11 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                 xmlhttp.send();
             }
         }
+
     </script>
 </head>
 
-<body id="body-pd">
+<body id="body-pd" >
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->
 <div class="height-100 ">
@@ -86,10 +94,11 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                        <th>Marks</th>
                    </tr>
                    <?php foreach($subjects as $sub): ?>
+                    
                     <tr>
-                        <td><?php echo $sub['subject'] ?><input type="hidden" value="<?php echo $sub['subject'] ?>" name="subject[]"></td>
-                        
-                        <td><input type="number" class="form-control" name="marks[]" required>
+                        <td><?php echo $sub['subject'] ?><input type="hidden" value="<?php echo $sub['subject'] ?>" name="subject[]" ></td>
+                        <?php $req_stat = selectOne('subject', ['s_structure' =>  $sub['subject']])?>
+                        <td><input type="number" class="form-control req_stat" name="marks[]" <?php echo $req_stat['status'] ?> >
                         <div class="invalid-feedback">
                         <?php echo $sub['subject']?> marks is required
                     </div>
@@ -99,7 +108,7 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                     <?php endforeach; ?>
                </table>
                <br>
-                <button class="form-control p-2 btn-primary" type="submit" name="submit">Submit</button>
+                <button class="form-control p-2 btn-primary"  type="submit" name="submit">Submit</button>
             </form>
         </div>
     </div>

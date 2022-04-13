@@ -11,6 +11,8 @@ if($single_data['percentage'] >= 45){
     $pass_status = "Fail";
     $pass_class = "bg-danger";
 }
+
+
 ?>
 
 

@@ -13,5 +13,9 @@ if ($q !== "") {
   echo $result['index_number'];
 }
 
+
+
+
+
 // Output "no suggestion" if no code was found or output correct values
 //echo $code === $code;

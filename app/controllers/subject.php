@@ -29,6 +29,13 @@ if (isset($_POST['add-subj'])){
    
     //printD($error);
     if (empty($error)){
+
+        $_POST['s_structure'] = $_POST['subject'].'('.$_POST['subject_type'].')';
+        if($_POST['subject_type'] == 'Main'){
+            $_POST['status'] = 'required';
+        } else{
+            $_POST['status'] = '';
+        }
         $subject_id = create($table, $_POST);
         //printD($item_id);
         header('location:'.$BASE_URL.'/srms/subject_list.php');

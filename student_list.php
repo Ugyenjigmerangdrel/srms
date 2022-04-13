@@ -4,7 +4,14 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/student.php');
 
-$classes = selectAll('student');
+
+
+if ($_SESSION['role'] == 'Superadmin'){
+    $classes = selectAll('student');
+} else{
+    $classes = selectAll('student', ['class' => $_SESSION['class_assigned']]);
+}
+
 ?>
 
 

@@ -4,7 +4,7 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
 
-$records = selectAll('result_record');
+
 
 
 if(empty($_SESSION['status'])){
@@ -13,6 +13,12 @@ if(empty($_SESSION['status'])){
 } else{
     $noti = $_SESSION['status'];
     $noti_status = 'show';
+}
+
+if ($_SESSION['role'] == 'Superadmin'){
+    $records = selectAll('result_record');
+} else{
+    $records = selectAll('result_record', ['class' => $_SESSION['class_assigned']]);
 }
 
 

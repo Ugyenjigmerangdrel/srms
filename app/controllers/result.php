@@ -43,11 +43,20 @@ if(isset($_POST['submit'])){
    if(empty($errors)){
         $s_name = $_POST['s_name'];
         $s_code = $_POST['s_code'];
+        $s_subject  = $_POST['subject'];
         $s_marks = $_POST['marks'];
+        foreach($s_subject as $i => $subject){
+            if (!empty($s_marks[$i])){
+                
+            }else{
+                unset($s_marks[$i], $s_subject[$i]);
+            }
+        }
+        //printD($s_subject);
         $m_sum = array_sum($s_marks);
         $average = $m_sum/count($s_marks);
         //printD($average);
-        $s_subject  = $_POST['subject'];
+       
         $s_adder = $_SESSION['name'];
         $s_data = selectOne('student', ['index_number' => $s_code]);
         $class = $s_data['class'];
@@ -95,11 +104,14 @@ if(isset($_POST['update-result'])){
     //printD($_POST);
     $s_name = $_POST['s_name'];
     $s_code = $_POST['s_code'];
+    $s_subject  = $_POST['subject'];
     $s_marks = $_POST['marks'];
+
+    
     $m_sum = array_sum($s_marks);
     $average = $m_sum/count($s_marks);
     //printD($average);
-    $s_subject  = $_POST['subject'];
+    
     $s_adder = $_SESSION['name'];
     $s_data = selectOne('student', ['index_number' => $s_code]);
     $class = $s_data['class'];
@@ -137,3 +149,4 @@ if(isset($_POST['update-result'])){
         exit(0);
     }
 }
+

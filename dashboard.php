@@ -26,6 +26,64 @@ include($ROOTPATH . '/app/controllers/users.php');
 <div class="height-100 ">
     <br>
     <h4>Dashboard</h4>
+    <div class="row">
+        <div class="card col-lg-3 m-4 p-3">
+            <div class="">
+                Total Student
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+        <div class="card bg-warning col-lg-3 m-4 p-3">
+            <div class="">
+                Total Teacher
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+        <div class="card bg-info col-lg-3 m-4 p-3">
+            <div class="">
+                Total Classes
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col-lg-3 m-4 p-3">
+            <div class="">
+                Total User
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+        <div class="card bg-warning col-lg-3 m-4 p-3">
+            <div class="">
+                Result Status
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+        <div class="card bg-info col-lg-3 m-4 p-3">
+            <div class="">
+                Total Classes
+                <hr>
+            </div>
+            <div class="card-body">
+                <h4>400</h4>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Container Main end-->

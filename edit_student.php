@@ -45,8 +45,8 @@ include($ROOTPATH . '/app/controllers/student.php');
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="">Email</label>
-                    <input type="text" class="form-control" value="<?php echo $email; ?>" name="email"  required>
+                    <label for="">Email(Optional)</label>
+                    <input type="text" class="form-control" value="<?php echo $email; ?>" name="email"  >
                     <div class="invalid-feedback">
                         Student Email is required
                     </div>
