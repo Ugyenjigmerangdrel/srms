@@ -5,6 +5,17 @@ include('path.php');
 include($ROOTPATH . '/app/controllers/result.php');
 
 $records = selectAll('result_record');
+
+
+if(empty($_SESSION['status'])){
+    $noti = '';
+    $noti_status = 'd-none';
+} else{
+    $noti = $_SESSION['status'];
+    $noti_status = 'show';
+}
+
+
 ?>
 
 
@@ -27,8 +38,11 @@ $records = selectAll('result_record');
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->
 <div class="height-100 ">
+
 <div class="card">
+        
                     <div class="card-body">
+                    
                         <h5 class="">Manage Results</h5>
                         <div class="row">
                             <div class="col-lg-10">
@@ -38,6 +52,7 @@ $records = selectAll('result_record');
                                 <a href="add_result.php" class="btn-success p-2">+ Add Result</a>
                             </div>
                         </div>
+                        
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -57,9 +72,9 @@ $records = selectAll('result_record');
                                         <td><?php echo $key + 1; ?></td>
                                         <td><?php echo $mem['student_name']; ?></td>
                                         <td><?php echo $mem['class']; ?></td>
-                                        <td><?php echo $mem['student_id']; ?></td>
+                                        <td><?php echo $mem['student_code']; ?></td>
                                         <td><?php echo $mem['percentage']; ?></td>
-                                        <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
+                                        <td><a href="edit_result.php?user_id=<?php echo $mem['id']; ?>" class="p-2 btn-primary ">Edit</a>  <a href="?del_s_code=<?php echo $mem['student_code']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 
                                     </tr>
                                 <?php endforeach; ?>

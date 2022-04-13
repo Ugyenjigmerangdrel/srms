@@ -72,8 +72,10 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                 <br>
                 <div class="form-group">
                     <label for="">Student Code</label>
-                    <input type="text" name="s_code" class="form-control disable" id="txtCode" value="" required readonly>
-                    
+                    <input type="text" name="s_code" class="form-control disable <?php echo $p_status; ?>" id="txtCode" value="" required readonly>
+                    <div class="invalid-feedback">
+                        The result for this student alredy exists
+                    </div>
                     
                 </div>
                 <br>
@@ -85,7 +87,7 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                    </tr>
                    <?php foreach($subjects as $sub): ?>
                     <tr>
-                        <td><?php echo $sub['subject'] ?></td>
+                        <td><?php echo $sub['subject'] ?><input type="hidden" value="<?php echo $sub['subject'] ?>" name="subject[]"></td>
                         
                         <td><input type="number" class="form-control" name="marks[]" required>
                         <div class="invalid-feedback">

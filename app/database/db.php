@@ -106,6 +106,15 @@ function delete($table, $id){
     return $stmt->affected_rows;
 }
 
+function deleteResult($table, $stu_code){
+    global $conn;
+    $sql = "DELETE FROM $table WHERE student_code=?";
+
+    $stmt = executeQuery($sql, ['student_code' => $stu_code]);
+    return $stmt->affected_rows;
+}
+
+
 
 function searchItem($term){
     $match = '%' . $term . '%';

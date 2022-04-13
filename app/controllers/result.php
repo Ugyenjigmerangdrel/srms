@@ -1,7 +1,15 @@
 <?php
 
 include($ROOTPATH.'/app/database/db.php');
+include($ROOTPATH.'/app/helpers/validateResult.php');
 
+$errors = array();
+
+$s_name = '';
+$s_code = '';
+$s_marks = '';
+
+$table = 'result';
 if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
@@ -10,6 +18,74 @@ if(isset($_GET['del_id'])){
     exit();
 }
 
+if(isset($_GET['del_s_code'])){
+    $stu_code = $_GET['del_s_code'];
+    $count = deleteResult($table, $stu_code);
+    $count2 = deleteResult('result_record', $stu_code);
+    $_SESSION['message'] = "Result Deleted Successfully";
+    header('location:'. $BASE_URL. "/srms/result_list.php");
+    exit();
+}
+
+if(isset($_GET['student_id'])){
+    $s_code = $_GET['student_id'];
+    $user = selectOne($table, ['student_code' => $id]);
+    $id = $user['id'];
+    $name = $user['name'];
+    $email = $user['email'];
+    $code = $user['index_number'];
+    $dob = $user['dob'];
+} 
+
 if(isset($_POST['submit'])){
-    printD($_POST);
+    unset($_POST['submit']);
+    //printD($_POST);
+    $errors = validateResult($_POST);
+   if(empty($errors)){
+        $s_name = $_POST['s_name'];
+        $s_code = $_POST['s_code'];
+        $s_marks = $_POST['marks'];
+        $m_sum = array_sum($s_marks);
+        $average = $m_sum/count($s_marks);
+        //printD($average);
+        $s_subject  = $_POST['subject'];
+        $s_adder = $_SESSION['name'];
+        $s_data = selectOne('student', ['index_number' => $s_code]);
+        $class = $s_data['class'];
+        $s_name = $s_data['name'];
+        foreach($s_subject as $index => $subject){
+            global $conn;
+            $sub_name = $subject;
+            $marks = $s_marks[$index];
+
+            
+            //echo $subject." ".$class."".$marks."<br>";
+
+            $query = "INSERT INTO result (student_code, class, subject, marks, added_by) VALUES ('$s_code','$class', '$subject', '$marks', '$s_adder');";
+
+            //printD($query);
+
+            $query_run = mysqli_query($conn, $query); 
+        }
+
+        $r_query = "INSERT INTO result_record (student_id, percentage, class, student_name) VALUES ('$s_code', '$average', '$class', '$s_name');";
+
+        $r_ex = mysqli_query($conn, $r_query);
+        
+        if($query_run && $r_ex)
+        {
+            $_SESSION['status'] = "Result Inserted Successfully";
+            header("Location: result_list.php");
+            exit(0);
+        }
+        else
+        {
+            $_SESSION['status'] = "Result Not Inserted";
+            header("Location: result_list.php");
+            exit(0);
+        }
+   } else {
+    $p = $errors;
+    $p_status = 'is-invalid';
+   }
 }
