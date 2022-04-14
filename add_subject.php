@@ -3,7 +3,7 @@ $subject_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/subject.php');
-
+adminOnly();
 ?>
 
 <!DOCTYPE html>

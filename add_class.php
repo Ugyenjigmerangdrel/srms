@@ -2,7 +2,7 @@
 $user_status = "active";
 include('path.php');
 include($ROOTPATH . '/app/controllers/class.php');
-
+adminOnly();
 $users_d = selectAll('r_users');
 ?>
 

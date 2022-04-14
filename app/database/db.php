@@ -2,6 +2,8 @@
 session_start();
 require('connect.php');
 
+include($ROOTPATH . "/app/helpers/middleware.php");
+
 function executeQuery($sql, $data){
     global $conn;
     $stmt = $conn->prepare($sql);

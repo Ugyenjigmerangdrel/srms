@@ -3,7 +3,7 @@ $result_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
-
+adminOnly();
 if($single_data['percentage'] >= 45){
     $pass_status = "Pass";
     $pass_class = "bg-success";

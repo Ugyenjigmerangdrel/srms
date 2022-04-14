@@ -4,16 +4,10 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
 
+adminOnly();
 
 
-
-if(empty($_SESSION['status'])){
-    $noti = '';
-    $noti_status = 'd-none';
-} else{
-    $noti = $_SESSION['status'];
-    $noti_status = 'show';
-}
+$classes = selectAll('classes');
 
 if ($_SESSION['role'] == 'Superadmin'){
     $records = selectAll('result_record');
@@ -37,8 +31,29 @@ if ($_SESSION['role'] == 'Superadmin'){
     <link rel="stylesheet" href="assets/css/user.css">
     <script src="assets/js/sidenav.js"></script>
     <title>Result Management System</title>
-
     
+    
+    <!--The Script for ajx for student data retrieval-->
+    <script>
+        function getFiltered(str){
+            console.log(str);
+            if (str.length == 0) {
+                
+                //document.getElementByClass("txtCode").value = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //document.getElementById("txtCode").setAttribute('value', this.responseText);
+                }
+                }
+                xmlhttp.open("GET", "ajx_view.php?q="+str, true);
+                xmlhttp.send();
+            }
+        }
+
+    </script>
 </head>
 <body id="body-pd">
 <?php include("lender/sidebar.php"); ?>
@@ -57,6 +72,15 @@ if ($_SESSION['role'] == 'Superadmin'){
                             <div class="col-lg-2">
                                 <a href="add_result.php" class="btn-success p-2">+ Add Result</a>
                             </div>
+                        </div>
+                        <br>
+                        <div class="col-lg-4">
+                            <select name="" onchange="getFiltered(this.value)" id="result_class_query" class="form-control ">
+                                <option value=""><i class="fal fa-filter"></i> Filter Class</option>
+                                <?php foreach ($classes as $key => $mem): ?>
+                                <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
+                                <?php endforeach;?>
+                            </select>
                         </div>
                         
                         <div class="table-responsive">

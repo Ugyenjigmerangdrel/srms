@@ -3,7 +3,7 @@ $student_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/student.php');
-
+adminOnly();
 
 
 if ($_SESSION['role'] == 'Superadmin'){

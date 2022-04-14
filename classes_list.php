@@ -3,7 +3,7 @@ $class_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/class.php');
-
+adminOnly();
 $classes = selectAll('classes');
 ?>
 

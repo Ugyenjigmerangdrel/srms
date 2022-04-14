@@ -1,7 +1,7 @@
 <?php
 include('path.php');
 include($ROOTPATH.'/app/database/db.php');
-
+superadminOnly();
 
 $q = $_REQUEST["q"];
 

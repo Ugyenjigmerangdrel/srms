@@ -1,6 +1,7 @@
 <?php 
 include('path.php');
 include($ROOTPATH.'/app/database/db.php');
+superadminOnly();
 /**
 $data = ['name' => 'hello', 'class' => '12 A', 'student_code' => '222332324', 'subject'=>['math(elective)','cs'],'marks' => ['',56]];
 
@@ -28,6 +29,7 @@ function checkST($data){
  * 
  */
 //checkST('Mathematics(elective)');
+
 
 function url_encode($input)
 

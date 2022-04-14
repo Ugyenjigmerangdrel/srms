@@ -2,7 +2,7 @@
 $student_status = "active";
 include('path.php');
 include($ROOTPATH . '/app/controllers/student.php');
-
+adminOnly();
 ?>
 <!DOCTYPE html>
 <html lang="en">

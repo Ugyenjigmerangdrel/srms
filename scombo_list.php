@@ -3,7 +3,7 @@ $combo_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/subjectcombo.php');
-
+adminOnly();
 $classes = selectAll('subject_combo');
 ?>
 

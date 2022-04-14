@@ -3,7 +3,7 @@ $user_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/users.php');
-
+adminOnly();
 ?>
 
 

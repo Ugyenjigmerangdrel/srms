@@ -3,7 +3,7 @@ $result_status = "active";
 include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
-
+adminOnly();
 $students = selectAll('student', ['class' => $_SESSION['class_assigned']]);
 //printD($students);
 $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 2)] );
