@@ -12,3 +12,4 @@ function validateResult($result){
 
     return $n_err;
 }
+

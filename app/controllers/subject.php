@@ -19,7 +19,7 @@ if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "Suject Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/subject_list.php");
+    header('location:'. $BASE_URL. "subject_list.php");
     exit();
 }
 
@@ -38,7 +38,7 @@ if (isset($_POST['add-subj'])){
         }
         $subject_id = create($table, $_POST);
         //printD($item_id);
-        header('location:'.$BASE_URL.'/srms/subject_list.php');
+        header('location:'.$BASE_URL.'subject_list.php');
     } else {
         //$p = $error;
         $subject = $_POST['subject'];

@@ -4,12 +4,12 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
 adminOnly();
-$students = selectAll('student', ['class' => $_SESSION['class_assigned']]);
+$students = dispSort(['student', 'name', 'asc'], ['class' => $_SESSION['class_assigned']]);
 //echo strlen($_SESSION['class_assigned']);
 if (strlen($_SESSION['class_assigned']) > 5){
-    $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 7)] );
+    $subjects = dispSort(['subject_combo', 'subject', 'asc'], ['class' => substr($_SESSION['class_assigned'], 0, 7)] );
 } else{
-    $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assigned'], 0, 2)] );
+    $subjects = dispSort(['subject_combo', 'subject', 'asc'], ['class' => substr($_SESSION['class_assigned'], 0, 2)] );
 }
 
 //$req_status = "";

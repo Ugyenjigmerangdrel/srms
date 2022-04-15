@@ -7,9 +7,9 @@ adminOnly();
 
 
 if ($_SESSION['role'] == 'Superadmin'){
-    $classes = selectAll('student');
+    $classes = dispSort(['student', 'name', 'asc']);
 } else{
-    $classes = selectAll('student', ['class' => $_SESSION['class_assigned']]);
+    $classes = dispSort(['student', 'name', 'asc'], ['class' => $_SESSION['class_assigned']]);
 }
 
 ?>

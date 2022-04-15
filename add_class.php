@@ -49,9 +49,8 @@ $users_d = selectAll('r_users');
                 <br>
                 <div class="form-group">
                     <label for="">Stream</label>
-                    <select name="stream" class="form-control"  id="" required>
-                        <option value=""></option>
-                        <option value="none">None</option>
+                    <select name="stream" class="form-control"  id="" >
+                        <option value=" ">None</option>
                         <option value="Arts">Arts</option>
                         <option value="Commmerce">Commerce</option>
                         <option value="Science">Science</option>

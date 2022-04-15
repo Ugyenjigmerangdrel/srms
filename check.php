@@ -31,23 +31,22 @@ function checkST($data){
 //checkST('Mathematics(elective)');
 
 
-function url_encode($input)
 
-{
-
-return strtr(base64_encode($input), '+/=', '-_,');
-
-}
-
-function url_decode($input)
-
-{
-
-return base64_decode(strtr($input, '-_,', '+/='));
-
-}
 
 $p = url_encode('hello');
 echo $p;
 
 echo "<br>".url_decode($p);
+
+
+<?php foreach ($records as $key => $mem): ?>
+    <tr>
+        <td><?php echo $key + 1; ?></td>
+        <td><?php echo $mem['student_name']; ?></td>
+        <td><?php echo $mem['class']; ?></td>
+        <td><?php echo $mem['student_code']; ?></td>
+        <td><?php echo $mem['percentage']; ?></td>
+        <td><a href="view_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-info text-white">View</a> <a href="edit_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-primary ">Edit</a>  <a href="?del_s_code=<?php echo $mem['student_code']; ?>" class="p-2 btn-danger ">Remove</a>  </td>
+
+    </tr>
+<?php endforeach; ?>

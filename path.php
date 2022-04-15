@@ -2,4 +2,4 @@
 
 $ROOTPATH = realpath(dirname(__FILE__));
 
-$BASE_URL = "http://localhost/srms";
+$BASE_URL = "http://localhost/srms/";

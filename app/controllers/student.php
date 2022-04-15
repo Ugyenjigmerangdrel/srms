@@ -21,7 +21,7 @@ if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "Suject Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/student_list.php");
+    header('location:'. $BASE_URL. "student_list.php");
     exit();
 }
 
@@ -43,7 +43,7 @@ if (isset($_POST['add-stu'])){
     if (empty($error)){
         $subject_id = create($table, $_POST);
         //printD($item_id);
-        header('location:'.$BASE_URL.'/srms/student_list.php');
+        header('location:'.$BASE_URL.'student_list.php');
     } else {
         $p = $error;
         $p_status = 'is-invalid';
@@ -69,7 +69,7 @@ if(isset($_POST['update_stu'])){
         
         $user_id = update($table, $id, $_POST);
         $_SESSION['message'] = "User Updated Successfully";
-        header('location:'. $BASE_URL. "/srms/student_list.php");
+        header('location:'. $BASE_URL. "student_list.php");
     } else{
         
     }

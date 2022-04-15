@@ -14,7 +14,7 @@ if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "Suject Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/student_list.php");
+    header('location:'. $BASE_URL. "student_list.php");
     exit();
 }
 
@@ -23,7 +23,7 @@ if(isset($_GET['del_s_code'])){
     $count = deleteResult($table, $stu_code);
     $count2 = deleteResult('result_record', $stu_code);
     $_SESSION['message'] = "Result Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/result_list.php");
+    header('location:'. $BASE_URL. "result_list.php");
     exit();
 }
 
@@ -150,3 +150,16 @@ if(isset($_POST['update-result'])){
     }
 }
 
+if(isset($_GET['disp'])){
+    //printD($_GET['disp']);
+    $records = dispSort(['result_record', 'percentage', 'DESC'], ['class' => $_GET['disp']]);
+} else{
+    
+    if ($_SESSION['role'] == 'Superadmin'){
+        $records = dispSort(['result_record', 'percentage', 'DESC']);
+        
+    } else{
+        $records = dispSort(['result_record', 'percentage', 'DESC'], ['class' => $_SESSION['class_assigned']]);
+    }
+
+}

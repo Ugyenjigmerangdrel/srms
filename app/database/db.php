@@ -152,3 +152,53 @@ function update($table, $id, $data){
     return $stmt->affected_rows;
 }
 
+function dispSort($table=[], $conditions = []){
+    global $conn;
+
+    $sql = "SELECT * FROM $table[0]";
+    if (empty($conditions)){
+        $sql = $sql." ORDER BY $table[1] $table[2]";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $records;
+    } else{
+        $i = 0;
+
+        foreach ($conditions as $key => $value) {
+            if ($i === 0){
+                $sql = $sql . " WHERE $key= ? ORDER BY $table[1] $table[2]";
+            } else{
+                $sql = $sql . " AND $key= ? ORDER BY $table[1] $table[2]";
+            }
+            $i++;
+        }
+        /**In order to prevent from sql inject where the user might type in sql codes which will be directly executed code, in order to prevent that from happening we will be using bind parameters. */
+
+     
+        $stmt = executeQuery($sql, $conditions);
+        //$stmt = executeQuery($sql, $conditions);
+        $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $records;
+    }
+
+}
+
+
+function url_encode($input)
+
+{
+
+return strtr(base64_encode($input), '+/=', '-_,');
+
+}
+
+function url_decode($input)
+
+{
+
+return base64_decode(strtr($input, '-_,', '+/='));
+
+}

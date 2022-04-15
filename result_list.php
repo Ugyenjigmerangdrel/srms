@@ -10,9 +10,10 @@ adminOnly();
 $classes = selectAll('classes');
 
 if ($_SESSION['role'] == 'Superadmin'){
-    $records = selectAll('result_record');
+    $fil_stat = "d-block";
+    
 } else{
-    $records = selectAll('result_record', ['class' => $_SESSION['class_assigned']]);
+    $fil_stat = "d-none";
 }
 
 
@@ -34,25 +35,10 @@ if ($_SESSION['role'] == 'Superadmin'){
     
     
     <!--The Script for ajx for student data retrieval-->
-    <script>
-        function getFiltered(str){
-            console.log(str);
-            if (str.length == 0) {
-                
-                //document.getElementByClass("txtCode").value = "";
-                return;
-            } else {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById("txtCode").setAttribute('value', this.responseText);
-                }
-                }
-                xmlhttp.open("GET", "ajx_view.php?q="+str, true);
-                xmlhttp.send();
-            }
+    <script type="text/javascript">
+        function submitForm(){
+            document.getElementById('dispForm').submit();
         }
-
     </script>
 </head>
 <body id="body-pd">
@@ -74,13 +60,15 @@ if ($_SESSION['role'] == 'Superadmin'){
                             </div>
                         </div>
                         <br>
-                        <div class="col-lg-4">
-                            <select name="" onchange="getFiltered(this.value)" id="result_class_query" class="form-control ">
-                                <option value=""><i class="fal fa-filter"></i> Filter Class</option>
+                        <div class="col-lg-4 <?php echo $fil_stat; ?>">
+                           <form action="result_list.php" action="post" id="dispForm">
+                            <select name="disp" onchange="submitForm()" id="result_class_query" class="form-control ">
+                                <option value="">Filter Class</option>
                                 <?php foreach ($classes as $key => $mem): ?>
-                                <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
+                                <option value="<?php echo $mem['class_comb'] ?>"><?php echo $mem['class_comb'] ?></option>
                                 <?php endforeach;?>
                             </select>
+                           </form>
                         </div>
                         
                         <div class="table-responsive">

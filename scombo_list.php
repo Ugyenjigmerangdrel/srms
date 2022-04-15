@@ -4,7 +4,7 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/subjectcombo.php');
 adminOnly();
-$classes = selectAll('subject_combo');
+$classes = dispSort(['subject_combo', 'class', 'desc']);
 ?>
 
 

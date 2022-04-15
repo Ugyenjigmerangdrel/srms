@@ -1,20 +1,15 @@
 <?php 
-$result_status = "active";
 include('path.php');
 
-include($ROOTPATH . '/app/controllers/result.php');
-adminOnly();
-if($single_data['percentage'] >= 45){
+include($ROOTPATH . '/app/controllers/std_front.php');
+if($per['percentage'] >= 45){
     $pass_status = "Pass";
     $pass_class = "bg-success";
 } else{
     $pass_status = "Fail";
     $pass_class = "bg-danger";
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,30 +19,40 @@ if($single_data['percentage'] >= 45){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <?php include("lender/head.php"); ?>
-    <link rel="stylesheet" href="assets/css/sidenav.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
 
-    <script src="assets/js/sidenav.js"></script>
+    <script src="assets/js/landing.js"></script>
     <title>Result Management System</title>
 </head>
-<body id="body-pd">
-<?php include("lender/sidebar.php"); ?>
+<body>
+
 <!--Container Main start-->
-<div class="height-100 ">
- 
-<div class="container pt-2">
-    <div class="col-lg-6  mt-4">
+<div class="container">
+    <div class="col-lg-5 col-md-8 col-sm-12 m-auto mt-4">
         <div class="card">
         <div class="card-header">
-                    <p class="text-uppercase">
-                        Result For: <b><?php echo $s_name ?></b>
-                        <br>
-                        Student Code: <b><?php echo $s_code ?></b>
-                        <br>
-                        Class: <b><?php echo $single_data['class'] ?></b>
-                    </p>
+            <div class="image row">
+                <div class="col-lg-2 col-md-2 col-sm-12 mt-3 text-center">
+                <img src="https://www.drukjeganghss.bt/assets/img/logo.png" alt="" width="60" height="60">
                 </div>
+                <div class="col-lg-10 col-md-10 col-sm-12 mt-3">
+                <h6 class="text-uppercase text-center">Drukjegang Higher Secondary School</h6>
+                <p class="text-uppercase text-center">Examination Result</p>
+                </div>
+            </div>
+            <br>
+            
+            </div>
                 
             <div class="card-body">
+                <p class="text-uppercase">
+                    Result For: <b><?php echo $per['student_name']; ?></b>
+                    <br>
+                    Student Code: <b><?php echo $per['student_code']; ?></b>
+                    <br>
+                    Class: <b><?php echo $per['class']; ?></b>
+                </p>
+                <hr>
                 <h6 class="text-uppercase">Scoresheet</h6>
                 <hr>
                 <div class="table-responsive">
@@ -67,7 +72,7 @@ if($single_data['percentage'] >= 45){
                     <?php endforeach; ?>
                     <tr>
                         <td>Percentage</td>
-                        <td class='bg-light text-center'><?php echo $single_data['percentage'] ?>%</td>
+                        <td class='bg-light text-center'><?php echo $per['percentage']; ?>%</td>
                     </tr>
                     <tr>
                         <td>Status</td>
@@ -77,17 +82,22 @@ if($single_data['percentage'] >= 45){
                    
                 </table>
                 <br>
-                <div class="">
-                <a href="result_list.php" class="btn btn-primary form-control">Return Back</a>
+                <div class="col-lg-12">
+                    <a href="" class="btn btn-primary form-control">Download Result</a>
                 </div>
                 <hr>
-                
+                <div class="text-center">
+                <a href="https://www.drukjeganghss.bt" >www.drukjeganghss.bt</a>
+                </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</div>
+
+
+
+
 
 <!--Container Main end-->
 

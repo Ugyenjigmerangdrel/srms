@@ -28,7 +28,7 @@ $dashboard_status = "active";
             <h4>Online Result System </h4>
             <br>
             <div class="col-lg-7">
-                <a href="" class="btn btn-info text-white form-control p-3">Student</a>
+                <a href="retrieve_result.php" class="btn btn-info text-white form-control p-3">Student</a>
             </div>
             <br>
             <div class="col-lg-7">

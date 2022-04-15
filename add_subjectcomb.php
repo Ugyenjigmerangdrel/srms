@@ -3,8 +3,8 @@ $combo_status = "active";
 include('path.php');
 include($ROOTPATH . '/app/controllers/subjectcombo.php');
 adminOnly();
-$classes = selectAll('classes'); 
-$subject = selectAll('subject');
+$classes = dispSort(['classes', 'class_name', 'asc']); 
+$subject = dispSort(['subject', 'subject', 'asc']);
 ?>
 
 <!DOCTYPE html>

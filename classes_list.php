@@ -4,7 +4,7 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/class.php');
 adminOnly();
-$classes = selectAll('classes');
+$classes = dispSort(['classes', 'class_name', 'ASC']);
 ?>
 
 

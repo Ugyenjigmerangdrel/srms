@@ -4,7 +4,8 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/subject.php');
 adminOnly();
-$classes = selectAll('subject');
+$classes =  dispSort(['subject', 'subject', 'asc']);
+
 ?>
 
 

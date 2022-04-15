@@ -45,7 +45,7 @@ function loginUser($user){
     $_SESSION['class_assigned'] = $user['class_assigned'];
     $_SESSION['message'] = 'Sucessfully Logged In';
     $_SESSION['type'] = 'success';
-    header('location:'. $BASE_URL. '/srms/dashboard.php');
+    header('location:'. $BASE_URL. 'dashboard.php');
     exit();
 }
 
@@ -61,7 +61,7 @@ if (isset($_POST['register-btn'])){
         $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         
         $user_id = create($table, $_POST);
-        header('location:'. $BASE_URL. '/srms/user_edit.php');
+        header('location:'. $BASE_URL. 'user_edit.php');
        
        
 
@@ -109,7 +109,7 @@ if(isset($_POST['update-btn'])){
         //$_POST['password'] = $password;
         $user_id = update($table, $id, $_POST);
         $_SESSION['message'] = "User Updated Successfully";
-        header('location:'. $BASE_URL. "/srms/user_edit.php");
+        header('location:'. $BASE_URL. "user_edit.php");
     } else{
         $p = $errors;
         
@@ -118,7 +118,7 @@ if(isset($_POST['update-btn'])){
         $role = $_POST['role'];
         $contact = $_POST['contact'];
         $class_assigned = $_POST['class_assigned'];
-        header('location:'. $BASE_URL. "/srms/edit_user.php?user_id=" . $id);
+        header('location:'. $BASE_URL. "edit_user.php?user_id=" . $id);
     }
 
    

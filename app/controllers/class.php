@@ -19,7 +19,7 @@ if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "User Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/classes_list.php");
+    header('location:'. $BASE_URL. "classes_list.php");
     exit();
 }
 
@@ -29,12 +29,12 @@ if (isset($_POST['add-btn'])){
     //$error = validateClass($_POST);
     //printD($error);
     if (empty($error)){
-        $_POST['class_comb'] = $_POST['number_name']." ".$_POST['section'];
+        $_POST['class_comb'] = $_POST['number_name'].$_POST['stream'].$_POST['section'];
         //printD($_POST);
 
         $class_id = create($table, $_POST);
         //printD($item_id);
-        header('location:'.$BASE_URL.'/srms/classes_list.php');
+        header('location:'.$BASE_URL.'classes_list.php');
     } else {
         //$p = $error;
         $class_name = $_POST['class_name'];
