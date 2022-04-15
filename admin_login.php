@@ -25,8 +25,18 @@ loggedinUser();
 <div class="container-fluid">
     <div class="col-lg-4 m-auto mt-5">
        <div class="card card-body p-5">
-        <h4>Admin Login</h4>
+       <div class="image row">
+            <div class="col-lg-2 col-md-2 col-sm-12 mt-2 text-center">
+            <img src="https://www.drukjeganghss.bt/assets/img/logo.png" alt="" width="60" height="60">
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-12 mt-3">
+            <h6 class="text-uppercase text-center">Drukjegang Higher Secondary School</h6>
+            
+            </div>
+        </div>
         <hr>
+        <h6 class="text-uppercase">Admin Login</h6>
+        <br>
        <form action="admin_login.php" method="post">
             <div class="form-group">
                 <label for="">Email</label>

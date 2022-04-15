@@ -77,9 +77,17 @@ if($single_data['percentage'] >= 45){
                    
                 </table>
                 <br>
-                <div class="">
-                <a href="result_list.php" class="btn btn-primary form-control">Return Back</a>
+                <div class="mb-1">
+                <a href="download_result.php?student_code=<?php echo url_encode($s_code) ?>" class="btn btn-success form-control">Download</a>
                 </div>
+               
+                <div class="">
+                <a href="result_list.php?" class="btn btn-primary form-control">Return Back</a>
+                
+               
+                </div>
+                
+                
                 <hr>
                 
                 </div>

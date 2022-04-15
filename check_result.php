@@ -83,7 +83,7 @@ if($per['percentage'] >= 45){
                 </table>
                 <br>
                 <div class="col-lg-12">
-                    <a href="" class="btn btn-primary form-control">Download Result</a>
+                    <a href="download_result.php?student_code=<?php echo url_encode($per['student_code']) ?>" class="btn btn-primary form-control">Download Result</a>
                 </div>
                 <hr>
                 <div class="text-center">
