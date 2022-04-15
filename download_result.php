@@ -10,8 +10,14 @@ if (isset($_GET['student_code'])){
     //printD($marks);
     $datas = [];
     foreach($marks as $m){
-        array_push($datas, [$m['subject'],$m['marks']]);
-
+        if(strpos($m['subject'], '(Elective)')){
+            $subj_str = str_replace('(Elective)', ' ', $m['subject']);
+        } else if(strpos($m['subject'], '(Main)')){
+            $subj_str = str_replace('(Main)', ' ', $m['subject']);
+        }
+        //printD($subj_str );
+        array_push($datas,  [$subj_str,$m['marks']]);
+    
     }
 
     class PDF extends FPDF

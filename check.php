@@ -9,7 +9,12 @@ $student_data = selectOne('result_record', ['student_code' => '10021001218'])
 //printD($marks);
 $datas = [];
 foreach($marks as $m){
-    array_push($datas, [$m['subject'],$m['marks']]);
+    if(!strpos($m['subject'], '(Elective)')){
+        $subj_str = str_replace('(Elective)', ' ', $m['subject'])
+    } else if(!strpos($m['subject'], '(Main)')){
+        $subj_str = str_replace('(Main)', ' ', $m['subject'])
+    }
+    array_push($datas,  $subj_str,$m['marks']]);
 
 }
 
