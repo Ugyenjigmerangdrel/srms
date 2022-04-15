@@ -43,6 +43,7 @@ $classes = dispSort(['subject_combo', 'class', 'desc']);
                                         <th>Sl.No</th>
                                         <th>Class</th>
                                         <th>Subjects</th>
+                                        <th>Min. Pass Marks</th>
                                         <th>Action</th>
                                         
                                     </tr>
@@ -53,7 +54,7 @@ $classes = dispSort(['subject_combo', 'class', 'desc']);
                                         <td><?php echo $key + 1; ?></td>
                                         <td><?php echo $mem['class']; ?></td>
                                         <td><?php echo $mem['subject']; ?></td>
-                                       
+                                        <td><?php echo $mem['pmin']; ?></td>
                                         <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 
                                     </tr>

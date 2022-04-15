@@ -1,10 +1,17 @@
 <?php 
-$subject_status = "active";
+$config_status = "active";
 include('path.php');
-
-include($ROOTPATH . '/app/controllers/subject.php');
+include($ROOTPATH . '/app/controllers/published.php');
 adminOnly();
+$pub = selectAll('result_publish');
+//printD($pub[0]);
+if (count($pub) == 1){
+    header('location:'. $BASE_URL. "view_config.php?config_id=".$pub[0]['id']);
+} else{
+
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,41 +26,26 @@ adminOnly();
     <script src="assets/js/sidenav.js"></script>
     <title>Result Management System</title>
 </head>
-
 <body id="body-pd">
 <?php include("lender/sidebar.php"); ?>
 <!--Container Main start-->
 <div class="height-100 ">
-    <h5>Add Subject</h5>
+    <h5>Configure Result Publish Settings</h5>
     <hr>
     <div class="col-lg-6 card">
         <div class="card-body">
-            <form action="add_subject.php" class="needs-validation" method="post" novalidate>
+            <form action="config_publish.php" class="needs-validation" method="post" novalidate>
                 <div class="form-group">
-                    <label for="">Subject</label>
-                    <input type="text" class="form-control" value="<?php echo $subject; ?>" name="subject"  required>
+                    <label for="">Total Students</label>
+                    <input type="text" class="form-control" value="<?php echo $total_students; ?>" name="total_students"  required>
                     <div class="invalid-feedback">
-                        Subject is required
+                        Total Students is required
                     </div>
 
                 </div>
                 <br>
-                <div class="form-group">
-                    <label for="">Subject Type</label>
-                    <select name="subject_type" id="" class="form-control" required>
-                        <option value=""></option>
-                        <option value="Main">Main</option>
-                        <option value="Elective">Elective</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Subject Type is required
-                    </div>
-                   
-                </div>
-                <br>
                 
-               
-                <button class="form-control p-2 btn-primary" type="submit" name="add-subj">Add Class</button>
+                <button class="form-control p-2 btn-primary" type="submit" name="add-btn">Add Configuration</button>
             </form>
         </div>
     </div>

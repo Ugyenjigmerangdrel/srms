@@ -108,6 +108,15 @@ if (strlen($_SESSION['class_assigned']) > 5){
                     <?php endforeach; ?>
                </table>
                <br>
+               <div class="form-group">
+                    <label for="">SUPW Grade</label>
+                    <input type="text" name="supw" class="form-control "  value="<?php echo $supw; ?>" required >
+                    <div class="invalid-feedback">
+                        SUPW grade is required
+                    </div>
+                    
+                </div>
+               <br>
                 <button class="form-control p-2 btn-primary"  type="submit" name="submit">Submit</button>
             </form>
         </div>

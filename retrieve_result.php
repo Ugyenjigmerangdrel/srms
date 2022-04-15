@@ -3,6 +3,13 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/std_front.php');
 
+$publish = selectAll('result_publish');
+
+if ($publish[0]['published'] == 0){
+    header('location:'. $BASE_URL. "systemNotice.php");
+} else{
+   
+}
 ?>
 
 
@@ -17,7 +24,7 @@ include($ROOTPATH . '/app/controllers/std_front.php');
     <link rel="stylesheet" href="assets/css/landing.css">
 
     <script src="assets/js/landing.js"></script>
-    <title>Admin Login</title>
+    <title>Check Result</title>
 </head>
 <body style="background: #9234eb;">
 

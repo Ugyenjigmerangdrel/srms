@@ -63,10 +63,8 @@ $users_d = selectAll('r_users');
                <br>
                 <div class="form-group">
                     <label for="">Section</label>
-                    <input type="text" class="form-control" value="<?php echo $section; ?>" name="section" required>
-                    <div class="invalid-feedback">
-                        Section is required
-                    </div>
+                    <input type="text" class="form-control" value="<?php echo $section; ?>" name="section" >
+                    
 
                 </div>
                <br>

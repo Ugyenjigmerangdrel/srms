@@ -8,7 +8,7 @@ $errors = array();
 $s_name = '';
 $s_code = '';
 $s_marks = '';
-
+$supw = '';
 $table = 'result';
 if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
@@ -33,7 +33,7 @@ if(isset($_GET['student_id'])){
     //printD($user);
     $single_data = selectOne('result_record', ['student_code' => $s_code]);
     $s_name = $single_data['student_name']; 
-    
+    $supw = $single_data['supw']; 
 } 
 
 if(isset($_POST['submit'])){
@@ -45,6 +45,7 @@ if(isset($_POST['submit'])){
         $s_code = $_POST['s_code'];
         $s_subject  = $_POST['subject'];
         $s_marks = $_POST['marks'];
+        $supw = $_POST['supw'];
         foreach($s_subject as $i => $subject){
             if (!empty($s_marks[$i])){
                 
@@ -76,7 +77,7 @@ if(isset($_POST['submit'])){
             $query_run = mysqli_query($conn, $query); 
         }
 
-        $r_query = "INSERT INTO result_record (student_code, percentage, class, student_name) VALUES ('$s_code', '$average', '$class', '$s_name');";
+        $r_query = "INSERT INTO result_record (student_code, percentage, class, student_name, supw) VALUES ('$s_code', '$average', '$class', '$s_name', '$supw');";
         //printD($r_query);
         $r_ex = mysqli_query($conn, $r_query);
         
@@ -106,7 +107,7 @@ if(isset($_POST['update-result'])){
     $s_code = $_POST['s_code'];
     $s_subject  = $_POST['subject'];
     $s_marks = $_POST['marks'];
-
+    $supw = $_POST['supw'];
     
     $m_sum = array_sum($s_marks);
     $average = $m_sum/count($s_marks);
@@ -130,7 +131,7 @@ if(isset($_POST['update-result'])){
         $query_run = mysqli_query($conn, $query); 
     }
 
-    $r_query = "UPDATE result_record SET percentage='$average' WHERE student_code=$s_code";
+    $r_query = "UPDATE result_record SET percentage='$average', supw='$supw' WHERE student_code=$s_code";
 
     //printD($r_query);
 

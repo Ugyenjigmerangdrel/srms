@@ -72,6 +72,16 @@ $subjects = selectAll('subject_combo', ['class' => substr($_SESSION['class_assig
                     
                     <?php endforeach; ?>
                </table>
+               
+               <br>
+               <div class="form-group">
+                    <label for="">SUPW Grade</label>
+                    <input type="text" name="supw" class="form-control  " id="txtCode" value="<?php echo $supw; ?>" required >
+                    <div class="invalid-feedback">
+                        SUPW grade is required
+                    </div>
+                    
+                </div>
                <br>
                 <button class="form-control p-2 btn-primary" type="submit" name="update-result">Update</button>
             </form>

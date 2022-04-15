@@ -4,7 +4,7 @@
 </header>
 <div class="l-navbar" id="nav-bar">
     <nav class="nav">
-        <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">SRMS 101</span> </a>
+        <div> 
             <div class="nav_list"> 
                 <a href="dashboard.php" class="nav_link <?php echo $dashboard_status; ?>"> <i class='bx bx-grid-alt nav_icon'></i> <span class="nav_name">Dashboard</span> </a> 
 
@@ -19,6 +19,9 @@
                 <a href="student_list.php" class="nav_link <?php echo $student_status; ?>"> <i class='bx bx-home nav_icon'></i> <span class="nav_name">Students</span> </a> 
 
                 <a href="result_list.php" class="nav_link <?php echo $result_status; ?>"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Result</span> </a> 
+
+                <a href="config_publish.php" class="nav_link <?php echo $config_status; ?>"> <i class='bx bx-doughnut-chart nav_icon'></i> <span class="nav_name">Configure Publish</span> </a> 
+                
             </div>
         </div> 
     </nav>

@@ -29,7 +29,7 @@ if (isset($_POST['add-btn'])){
     //$error = validateClass($_POST);
     //printD($error);
     if (empty($error)){
-        $_POST['class_comb'] = $_POST['number_name'].$_POST['stream'].$_POST['section'];
+        $_POST['class_comb'] = $_POST['number_name'].' '.$_POST['stream'].' '.$_POST['section'];
         //printD($_POST);
 
         $class_id = create($table, $_POST);

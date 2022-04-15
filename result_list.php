@@ -6,6 +6,15 @@ include($ROOTPATH . '/app/controllers/result.php');
 
 adminOnly();
 
+$publish = selectAll('result_publish');
+
+if ($publish[0]['published'] == 0){
+    $pub_id = 1;
+    $pub_text = 'Publish Result';
+} else{
+    $pub_id = 0;
+    $pub_text = 'Unpublish Result';
+}
 
 $classes = selectAll('classes');
 
@@ -52,8 +61,11 @@ if ($_SESSION['role'] == 'Superadmin'){
                     
                         <h5 class="">Manage Results</h5>
                         <div class="row">
-                            <div class="col-lg-10">
+                            <div class="col-lg-8">
                             <p class="card-description">Details of Classes in the school </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <a href="view_config.php?publish=<?php echo $pub_id;?>" class="btn-primary p-2"><?php echo $pub_text ?></a>
                             </div>
                             <div class="col-lg-2">
                                 <a href="add_result.php" class="btn-success p-2">+ Add Result</a>
@@ -80,6 +92,7 @@ if ($_SESSION['role'] == 'Superadmin'){
                                         <th>Class</th>
                                         <th>Student Code</th>
                                         <th>Percentage</th>
+                                        <th>SUPW</th>
                                         <th>Status</th>
                                         
                                     </tr>
@@ -92,6 +105,7 @@ if ($_SESSION['role'] == 'Superadmin'){
                                         <td><?php echo $mem['class']; ?></td>
                                         <td><?php echo $mem['student_code']; ?></td>
                                         <td><?php echo $mem['percentage']; ?></td>
+                                        <td><?php echo $mem['supw']; ?></td>
                                         <td><a href="view_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-info text-white">View</a> <a href="edit_result.php?student_id=<?php echo $mem['student_code']; ?>" class="p-2 btn-primary ">Edit</a>  <a href="?del_s_code=<?php echo $mem['student_code']; ?>" class="p-2 btn-danger ">Remove</a>  </td>
 
                                     </tr>

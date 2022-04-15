@@ -4,15 +4,42 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/result.php');
 adminOnly();
-if($single_data['percentage'] >= 45){
-    $pass_status = "Pass";
-    $pass_class = "bg-success";
-} else{
+
+
+$result_data = selectAll('result', ['student_code' => $single_data['student_code']]);
+//printD($result_data);
+$main = [];
+$el = [];
+foreach($result_data as $i => $data){
+    $subject = selectOne('subject_combo', ['subject' => $data['subject']]);
+    //echo $data['subject'];
+    $min = $subject['pmin'];
+    
+    if (strpos($data['subject'], 'Main')){
+        if($data['marks'] <= $min){
+            array_push($main, "1");
+        } else{
+            
+        }
+    } else if(strpos($data['subject'], 'Elective')){
+        if($data['marks'] <= $min){
+            array_push($el, "1");
+        } else{
+            
+        }
+    }
+
+    
+}
+//echo count($main).' '.count($el);
+
+if (count($main) >= 1 || count($el) >= 2){
     $pass_status = "Fail";
     $pass_class = "bg-danger";
+} else{
+    $pass_status = "Pass";
+    $pass_class = "bg-success";
 }
-
-
 ?>
 
 
@@ -72,6 +99,10 @@ if($single_data['percentage'] >= 45){
                     <tr>
                         <td>Status</td>
                         <td class='<?php echo $pass_class ?> text-white text-center'><?php echo $pass_status ?></td>
+                    </tr>
+                    <tr>
+                        <td>SUPW</td>
+                        <td class='bg-light text-center'><?php echo $single_data['supw'] ?></td>
                     </tr>
                     </tbody>
                    

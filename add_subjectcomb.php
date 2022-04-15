@@ -58,6 +58,17 @@ $subject = dispSort(['subject', 'subject', 'asc']);
                     </select>
                     <br>
                 </div>
+
+                <br>
+                <div class="form-group">
+                    <label for="">Minimum Pass Mark</label>
+                    <input type="number" name="pmin" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Minimum Pass Mark is required
+                    </div>
+                   
+                </div>
+                <br>
                 <button class="form-control p-2 btn-primary" type="submit" name="subject-combo">Add Combination</button>
             </form>
         </div>

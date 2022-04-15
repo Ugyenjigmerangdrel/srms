@@ -4,6 +4,7 @@ include('path.php');
 
 include($ROOTPATH . '/app/controllers/users.php');
 adminOnly();
+$classes = selectAll('classes');
 ?>
 
 
@@ -71,15 +72,14 @@ adminOnly();
                     <label for="">Class Assigned</label>
                     <select name="class_assigned"  id="" class="form-control" required>
                        <?php if ($class_assigned !== '') {?>
-                       <option value="<?php echo $class_assigned?>" selected><?php echo $class_assigned?></option>
+                       <option value="<?php echo $class_assigned?>" ><?php echo $class_assigned?></option>
                        <?php foreach ($classes as $key => $mem): ?>
-                        <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
-                        
+                        <option value="<?php echo $mem['class_comb']?>"><?php echo $mem['class_comb']?></option>
                         <?php endforeach;?>
                        <?php } else {?>
                         <option value="" selected></option>
                         <?php foreach ($classes as $key => $mem): ?>
-                        <option value="<?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?>"><?php echo $mem['number_name']." ".$mem['stream']." ".$mem['section'] ?></option>
+                        <option value="<?php echo $mem['class_comb']?>"><?php echo $mem['class_comb']?></option>
                         <?php endforeach;?>
                       
                        <?php } ?>

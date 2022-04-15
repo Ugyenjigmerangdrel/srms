@@ -1,125 +1,37 @@
 <?php
-require('/fpdf/fpdf.php');
 include('path.php');
 include($ROOTPATH.'/app/database/db.php');
 
 
-$marks = selectAll('result', ['student_code' => '10021001218']);
-$student_data = selectOne('result_record', ['student_code' => '10021001218'])
+$marks = selectAll('result', ['student_code' => '101005004']);
 //printD($marks);
-$datas = [];
-foreach($marks as $m){
-    if(!strpos($m['subject'], '(Elective)')){
-        $subj_str = str_replace('(Elective)', ' ', $m['subject'])
-    } else if(!strpos($m['subject'], '(Main)')){
-        $subj_str = str_replace('(Main)', ' ', $m['subject'])
+$main = [];
+$el = [];
+foreach($marks as $i => $data){
+    $subject = selectOne('subject_combo', ['subject' => $data['subject']]);
+    //echo $data['subject'];
+    $min = $subject['pmin'];
+    
+    if (strpos($data['subject'], 'Main')){
+        if($data['marks'] <= $min){
+            array_push($main, "1");
+        } else{
+            
+        }
+    } else if(strpos($data['subject'], 'Elective')){
+        if($data['marks'] <= $min){
+            array_push($el, "1");
+        } else{
+            
+        }
     }
-    array_push($datas,  $subj_str,$m['marks']]);
 
-}
-
-class PDF extends FPDF
-{
-// Page header
-
-function Header()
-{
-   
-    // Logo
-    $this->Image('https://www.drukjeganghss.bt/assets/img/logo.png',10,6,30);
-    // Arial bold 15
-    $this->SetFont('Times','B',15);
-    // Move to the right
-    $this->Cell(50);
-    // Title
-    $this->MultiCell(100,8, 'DRUKJEGANG CENTRAL SCHOOL                     DAGANA, BHUTAN                                  Student Progress Report', 'C');
-
-    $this->Image('https://www.drukjeganghss.bt/assets/img/40-logo.png',170,6,30);
-    // Line break
-    $this->Ln(10);
-    $this->SetLineWidth(0.5);
-    $this->Line(240,40,0,40);
-    $this->Ln(0);
-}
-
-// Page footer
-function Footer()
-{
-    // Position at 1.5 cm from bottom
-    $this->SetY(-15);
-    $this->SetX(10);
-    // Arial italic 8
-    $this->SetFont('Arial','',8);
-    // Page number
-    $this->Cell(0,10,'Contact-Principal Office: 06-487128 Vice Principal: 06 487124 General Office: 06 487152',0,0,'C');
-    $this->Ln(5);
-    $this->SetX(10);
-    $this->Cell(0,10,'Email Address: dg.drukjegangcs@education.gov.bt',0,0,'C');
-}
-
-function printL($str, $font_w)
-{
-    // Position at 1.5 cm from bottom
-    
-    // Arial italic 8
-    $this->SetFont('Times',$font_w,12);
-    // Page number
-    $this->Cell(0,10,$str,0,0,'L');
-    $this->Ln(7);
     
 }
+//echo count($main).' '.count($el);
 
-function BasicTable($header, $data)
-{
-    // Header
-    $size = ['80', '50'];
-    $form = ['L', 'C'];
-    foreach($header as $i => $col)
-        $this->Cell($size[$i],10,$col,1,0,$form[$i]);
-    $this->Ln();
-    // Data
-    $this->SetFont('Times','',12);
-    foreach($data as $row)
-    {
-        foreach($row as $i => $col)
-       
-            $this->Cell($size[$i],7,$col,1,0,$form[$i]);
-        $this->Ln();
-    } 
+if (count($main) >= 1 || count($el) >= 2){
+    echo "fail";
+} else{
+    echo "pass";
 }
-
-function createRows($data){
-    $size = ['80', '50'];
-    $form = ['L', 'C'];
-    foreach($data as $i => $col)
-       
-        $this->Cell($size[$i],7,$col,1,0, $form[$i]);
-    $this->Ln();
-}
-
-}
-
-// Instanciation of inherited class
-$pdf = new PDF();
-$pdf->AliasNbPages();
-$pdf->AddPage();
-$pdf->SetLeftMargin(40);
-$pdf->SetX(40);
-$pdf->SetFont('Times','',12);
-$header = array('Subject', 'Marks');
-$data = $datas;
-$pdf->printL("Name: Ugyen Jigme Rangdrel                                Class: 12 Arts A ", 'B');
-
-$pdf->printL("Student Code: 102023023", 'B');
-$pdf->Ln(3);
-$pdf->printL("Scoresheet:", 'B');
-$pdf->Ln(3);
-$pdf->BasicTable($header,$data);
-$pdf->createRows(['Percentage', '98%']);
-$pdf->createRows(['Status', 'Pass']);
-$pdf->Ln(20);
-$pdf->Cell(0,10,'Principal                                                                     Academic Coordinator',0,0,'L');
-//$pdf->Cell(10);
-
-$pdf->Output();
-?>

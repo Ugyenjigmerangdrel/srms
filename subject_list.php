@@ -44,6 +44,7 @@ $classes =  dispSort(['subject', 'subject', 'asc']);
                                         <th>Sl.No</th>
                                         <th>Subject Name</th>
                                         <th>Subject Type</th>
+                                        
                                         <th>Action</th>
                                         
                                     </tr>
@@ -54,7 +55,7 @@ $classes =  dispSort(['subject', 'subject', 'asc']);
                                         <td><?php echo $key + 1; ?></td>
                                         <td><?php echo $mem['subject']; ?></td>
                                         <td><?php echo $mem['subject_type']; ?></td>
-                                       
+                                      
                                         <td> <a href="?del_id=<?php echo $mem['id']; ?>" class="p-2 btn-danger ">Remove</a> </td>
 
                                     </tr>

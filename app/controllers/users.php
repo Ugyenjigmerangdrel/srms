@@ -22,7 +22,7 @@ if(isset($_GET['del_id'])){
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message'] = "User Deleted Successfully";
-    header('location:'. $BASE_URL. "/srms/user_edit.php");
+    header('location:'. $BASE_URL. "user_edit.php");
     exit();
 }
 

@@ -20,6 +20,40 @@ if (isset($_GET['student_code'])){
     
     }
 
+    $result_data = selectAll('result', ['student_code' => $code]);
+    //printD($result_data);
+    $main = [];
+    $el = [];
+    foreach($result_data as $i => $data){
+        $subject = selectOne('subject_combo', ['subject' => $data['subject']]);
+        //echo $data['subject'];
+        $min = $subject['pmin'];
+        
+        if (strpos($data['subject'], 'Main')){
+            if($data['marks'] <= $min){
+                array_push($main, "1");
+            } else{
+                
+            }
+        } else if(strpos($data['subject'], 'Elective')){
+            if($data['marks'] <= $min){
+                array_push($el, "1");
+            } else{
+                
+            }
+        }
+
+        
+    }
+    //echo count($main).' '.count($el);
+
+    if (count($main) >= 1 || count($el) >= 2){
+        $pass_status = "Fail";
+        $pass_class = "bg-danger";
+    } else{
+        $pass_status = "Pass";
+        $pass_class = "bg-success";
+    }
     class PDF extends FPDF
     {
     // Page header
@@ -119,9 +153,10 @@ if (isset($_GET['student_code'])){
     $pdf->Ln(3);
     $pdf->BasicTable($header,$data);
     $pdf->createRows(['Percentage', $student_data['percentage'].'%']);
-    $pdf->createRows(['Status', 'Pass']);
+    $pdf->createRows(['Status', $pass_status]);
+    $pdf->createRows(['SUPW', $student_data['supw']]);
     $pdf->Ln(20);
-    $pdf->Cell(0,10,'Principal                                                                     Academic Coordinator',0,0,'L');
+    $pdf->Cell(0,10,'Academic Head/Class Teacher                                                          Principal',0,0,'L');
     //$pdf->Cell(10);
 
     $pdf->Output('D', $student_data['student_name'].'_Result.pdf');
